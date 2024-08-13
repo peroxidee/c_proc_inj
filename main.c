@@ -54,7 +54,7 @@ int main(int argc, char* argv[]) {
 
 
     HANDLE h = OpenProcess(WRITE_OWNER, true, PID);
-    printf("%s getting process...", i);
+    printf("%s getting process...\n", i);
     VirtualAllocEx(h, &Buf, s,0x00001000,0x40 );
     /*[in]           HANDLE hProcess,
       [in, optional] LPVOID lpAddress,
@@ -63,11 +63,11 @@ int main(int argc, char* argv[]) {
       [in]           DWORD  flProtect
     */
 
-    printf("%s allocating virutal memory...", i);
+    printf("%s allocating virutal memory...\n", i);
     WriteProcessMemory(h, &Buf, Buf, s, NULL);
-    printf("%s writing virutal memory...", i);
+    printf("%s writing virutal memory...\n", i);
     if(CreateThread(NULL, s, &Buf, NULL, h,NULL)) {
-        printf("%s thread created.", k);
+        printf("%s thread created\n.", k);
     }
     else {
 
